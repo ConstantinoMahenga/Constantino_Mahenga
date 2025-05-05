@@ -1,0 +1,214 @@
+/* src/pages/Contact.module.css */
+
+.contactSection {
+    padding: 5rem 1rem;
+    /* Fundo ligeiramente diferente para destacar */
+    background-color: var(--section-alt-bg, rgba(128, 128, 128, 0.04));
+     html.dark & {
+       background-color: var(--dark-section-alt-bg, rgba(255, 255, 255, 0.04));
+     }
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .contactContainer {
+    max-width: 700px; /* Largura adequada para formulário */
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--background); /* Fundo da "caixa" do form */
+     html.dark & {
+       background-color: var(--header-bg-dark); /* Fundo mais escuro no modo dark */
+     }
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+     html.dark & {
+       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+     }
+     padding-left: calc(max(2rem, env(safe-area-inset-left))); /* Padding seguro */
+     padding-right: calc(max(2rem, env(safe-area-inset-right)));
+  }
+  
+  .contactTitle {
+    font-size: 2rem; /* Tamanho consistente com outros títulos de seção */
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2.5rem; /* Mais espaço abaixo */
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  /* Linha decorativa */
+  .contactTitle::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 3px;
+      background-color: var(--primary-color);
+      opacity: 0.7; border-radius: 2px;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos do form */
+    gap: 1.5rem;          /* Espaço entre grupos de formulário */
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Espaço entre label e input */
+  }
+  
+  .formLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    opacity: 0.9;
+  }
+  
+  .formInput,
+  .formTextarea {
+    width: 100%; /* Ocupa largura total */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit; /* Usa a mesma fonte do body */
+    color: var(--text-color);
+    background-color: var(--input-bg, var(--background)); /* Fundo do input */
+    border: 1px solid var(--input-border-color, rgba(128, 128, 128, 0.3));
+    border-radius: 6px;
+    box-sizing: border-box; /* Garante padding dentro da largura */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+     html.dark & {
+        background-color: var(--dark-input-bg, var(--header-bg-dark));
+        border-color: var(--dark-input-border-color, rgba(255, 255, 255, 0.2));
+     }
+  }
+  /* Placeholder styles */
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: var(--placeholder-color, rgba(128, 128, 128, 0.6));
+    opacity: 1; /* Ensure visibility */
+     html.dark & {
+       color: var(--dark-placeholder-color, rgba(255, 255, 255, 0.4));
+     }
+  }
+  
+  /* Focus styles */
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-focus-ring, rgba(100, 108, 255, 0.3));
+     html.dark & {
+       box-shadow: 0 0 0 3px var(--dark-primary-focus-ring, rgba(124, 131, 255, 0.4));
+     }
+  }
+  
+  .formTextarea {
+    resize: vertical; /* Permite redimensionar só na vertical */
+    min-height: 120px; /* Altura mínima */
+  }
+  
+  /* Container para mensagens de status */
+  .statusMessageContainer {
+     min-height: 1.5em; /* Reserva espaço vertical para a mensagem */
+     text-align: center;
+  }
+  
+  .statusMessage {
+     font-size: 0.9rem;
+     padding: 0.5rem 1rem;
+     border-radius: 4px;
+     margin: 0;
+     font-weight: 500;
+     display: inline-block; /* Para centralizar melhor */
+  }
+  
+  /* Estilos específicos para sucesso e erro */
+  .statusMessage.success {
+    background-color: rgba(74, 222, 128, 0.2); /* Verde claro */
+    color: #166534; /* Verde escuro */
+     html.dark & {
+         background-color: rgba(74, 222, 128, 0.3);
+         color: #a7f3d0; /* Verde mais claro no escuro */
+     }
+  }
+  .statusMessage.error {
+    background-color: rgba(248, 113, 113, 0.2); /* Vermelho claro */
+    color: #991b1b; /* Vermelho escuro */
+     html.dark & {
+         background-color: rgba(248, 113, 113, 0.3);
+         color: #fecaca; /* Vermelho mais claro no escuro */
+     }
+  }
+  
+  
+  .submitButton {
+    padding: 0.9em 2em;
+    background-color: var(--primary-color);
+    color: var(--background); /* Contraste */
+    border: none;
+    font-size: 1rem;
+    font-weight: 600; /* Botão mais destacado */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+    margin-top: 1rem; /* Espaço acima do botão */
+    align-self: center; /* Centraliza o botão */
+    width: fit-content; /* Largura baseada no conteúdo */
+  }
+  .submitButton:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  .submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+     transform: none;
+     box-shadow: none;
+  }
+  
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .contactContainer {
+       padding: 1.5rem; /* Menos padding */
+    }
+    .contactTitle {
+       font-size: 1.8rem;
+       margin-bottom: 2rem;
+    }
+    .contactForm {
+       gap: 1.2rem; /* Menos espaço */
+    }
+     .formInput, .formTextarea {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+     }
+     .submitButton {
+        width: 100%; /* Botão ocupa largura total em mobile */
+        padding: 0.8em 1em;
+        font-size: 0.95rem;
+     }
+  }
+  
+  /* ========================================================= */
+  /* VARIÁVEIS OPCIONAIS (Adicione em :root e html.dark em index.css se usar) */
+  /*
+  :root {
+     --section-alt-bg: rgba(128, 128, 128, 0.04);
+     --input-bg: #ffffff;
+     --input-border-color: rgba(128, 128, 128, 0.3);
+     --placeholder-color: rgba(128, 128, 128, 0.6);
+     --primary-focus-ring: rgba(100, 108, 255, 0.3);
+  }
+  html.dark {
+     --dark-section-alt-bg: rgba(255, 255, 255, 0.04);
+     --dark-input-bg: #2a2a2a;
+     --dark-input-border-color: rgba(255, 255, 255, 0.2);
+     --dark-placeholder-color: rgba(255, 255, 255, 0.4);
+     --dark-primary-focus-ring: rgba(124, 131, 255, 0.4);
+  }
+  */
+  /* ========================================================= */

@@ -1,0 +1,148 @@
+/* src/pages/About.module.css */
+
+/* Estilos para a Seção Principal 'About' */
+.aboutSection {
+    padding: 5rem 1rem;
+    background-color: var(--background);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  /* Container para os blocos de texto alternados */
+  .aboutContainer {
+    max-width: 900px;
+    margin: 0 auto 6rem auto; /* Adiciona margem ABAIXO dos blocos, antes das skills */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  /* Bloco de texto individual (com animação) */
+  .aboutBlock {
+    width: 100%;
+    max-width: 550px;
+    padding: 1.8rem;
+    background-color: var(--card-bg, var(--header-bg));
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+     html.dark & {
+      background-color: var(--dark-card-bg, var(--header-bg-dark));
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+     }
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1),
+                transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  .alignLeft { align-self: flex-start; text-align: left; }
+  .alignRight { align-self: flex-end; text-align: right; }
+  .aboutBlock.isVisible { opacity: 1; transform: translateY(0); }
+  .blockTitle { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 1rem;}
+  .blockDescription { font-size: 1rem; color: var(--text-color); opacity: 0.85; line-height: 1.75;}
+  
+  
+  /* =========== NOVOS ESTILOS PARA HABILIDADES =========== */
+  
+  .skillsArea {
+    max-width: 1000px;
+    margin: 0 auto; /* Centraliza a área de skills */
+    padding: 3rem 1rem;
+  }
+  
+  .skillsSectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  /* Linha decorativa */
+  .skillsSectionTitle::after {
+    content: '';
+    position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 3px;
+    background-color: var(--primary-color);
+    opacity: 0.6; border-radius: 2px;
+  }
+  
+  /* Grid para as habilidades */
+  .skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  /* Card individual da habilidade */
+  .skillCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Garante nome centralizado */
+    padding: 1.5rem 1rem;
+    background-color: var(--card-bg, var(--header-bg));
+    border-radius: 8px;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+     html.dark & {
+        background-color: var(--dark-card-bg, var(--header-bg-dark));
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+     }
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .skillCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-color-translucent, rgba(100, 108, 255, 0.3));
+     html.dark & {
+       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+       border-color: var(--dark-primary-color-translucent, rgba(124, 131, 255, 0.4));
+     }
+  }
+  
+  /* Ícone da habilidade */
+  .skillIcon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+  }
+  
+  /* Nome da habilidade */
+  .skillName {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  /* =================================================== */
+  
+  /* --- Responsividade --- */
+  @media (max-width: 768px) {
+    /* Blocos */
+    .aboutContainer { margin-bottom: 4rem; gap: 3rem;}
+    .aboutBlock { align-self: center !important; text-align: center !important; max-width: 95%;}
+    .alignLeft, .alignRight { align-self: center !important; text-align: center !important; }
+    .blockTitle { font-size: 1.3rem; }
+    .blockDescription { font-size: 0.95rem; }
+  
+    /* Skills */
+    .skillsArea { padding: 2rem 0.5rem; }
+    .skillsSectionTitle { font-size: 1.6rem; margin-bottom: 2rem;}
+    .skillsGrid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; }
+    .skillCard { padding: 1.2rem 0.8rem; }
+    .skillIcon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+    .skillName { font-size: 0.85rem; }
+  }
+  
+  @media (max-width: 480px) {
+     .skillsGrid { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
+     .skillCard { padding: 1rem 0.5rem; }
+     .skillIcon { font-size: 2.2rem; }
+     .skillName { font-size: 0.8rem; }
+  }

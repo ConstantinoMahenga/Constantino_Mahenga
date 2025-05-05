@@ -1,0 +1,135 @@
+/* src/index.css */
+:root {
+  --background-light: #ffffff;
+  --text-light: #242424;
+  --primary-light: #646cff;
+  --header-bg-light: #f9f9f9;
+
+  --background-dark: #1a1a1a; /* Alterado para um cinza mais escuro */
+  --text-dark: #f0f0f0; /* Alterado para um cinza mais claro */
+  --primary-dark: #7c83ff; /* Cor primária ligeiramente ajustada para o modo escuro */
+  --header-bg-dark: #2a2a2a; /* Fundo do header no modo escuro */
+
+  --font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Default to light theme */
+  --background: var(--background-light);
+  --text-color: var(--text-light);
+  --primary-color: var(--primary-light);
+  --header-bg: var(--header-bg-light);
+}
+
+/* Apply dark theme variables when .dark class is present */
+html.dark {
+  --background: var(--background-dark);
+  --text-color: var(--text-dark);
+  --primary-color: var(--primary-dark);
+  --header-bg: var(--header-bg-dark);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center; /* Centraliza no vite default, pode remover/ajustar */
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100%;
+  max-width: 1280px; /* Ajustável conforme necessidade */
+  margin: 0 auto;
+  padding: 0; /* Remover padding default se houver */
+  text-align: center;
+}
+
+
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: inherit;
+}
+a:hover {
+  filter: brightness(1.1); /* Leve efeito ao passar o mouse */
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a00; /* Botão transparente por padrão */
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+  color: var(--text-color);
+}
+
+button:hover {
+ background-color: rgba(128, 128, 128, 0.1); /* Leve fundo no hover */
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Estilo para botões de ícone (header) */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem; /* Tamanho do ícone */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.icon-button:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+  border-radius: 50%;
+}
+
+.flag-icon {
+    width: 28px; /* Tamanho das bandeiras */
+    height: auto;
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid rgba(128, 128, 128, 0.3); /* Borda sutil */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flag-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilo para a bandeira ativa (opcional) */
+.flag-icon.active {
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Remove centralização padrão do Vite se não desejar */
+@media (min-width: 768px) {
+ body {
+   place-items: inherit;
+ }
+ #root {
+  text-align: left;
+ }
+}
